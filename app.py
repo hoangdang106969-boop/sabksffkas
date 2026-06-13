@@ -102,7 +102,6 @@ if page == "🏠 Trang chủ":
 | 11 | Q-learning 81 trạng thái | π*=6,60 > a1=5,45 > random=4,91 > a3=0,61 |
 | 12 | 5 kịch bản chính sách | S5 welfare 84,3 · S3 cyber risk 12,4 |
 """)
-    st.info("**Khai báo AI:** Xây dựng với sự hỗ trợ của Claude (Anthropic) theo quy định Phụ lục F2.", icon="ℹ️")
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -110,6 +109,7 @@ if page == "🏠 Trang chủ":
 # ════════════════════════════════════════════════════════════════════
 elif page == "📊 Bài 1 — Cobb-Douglas & TFP":
     st.title("📊 Bài 1 — Hàm sản xuất Cobb-Douglas mở rộng")
+    st.markdown("**Y=A·K⁰·³³·L⁰·⁴²·D⁰·¹⁰·AI⁰·⁰⁸·H⁰·⁰⁷** | Kết quả: TFP +4,6%/năm · MAPE 6,42% · TFP chiếm 49% tăng trưởng · GDP 2030 ≈ 18.262 nghìn tỷ")
     ALPHA, BETA, GAMMA, DELTA, THETA = 0.33, 0.42, 0.10, 0.08, 0.07
     years = MAC["year"].values
     Y = MAC["GDP_trillion_VND"].values.astype(float)
@@ -179,6 +179,7 @@ elif page == "📊 Bài 1 — Cobb-Douglas & TFP":
 # ════════════════════════════════════════════════════════════════════
 elif page == "🧮 Bài 2 — LP 4 hạng mục":
     st.title("🧮 Bài 2 — LP phân bổ ngân sách 4 hạng mục đầu tư số")
+    st.markdown("**max Z=0,85x₁+1,20x₂+0,95x₃+1,35x₄** | Nghiệm: x*=(25;15;20;40), Z*=112,25, shadow price ngân sách=**1,35** | Thay đổi slider ngân sách và sàn x₃ để xem Z* thay đổi tức thì")
     st.latex(r"\max Z = 0{,}85x_1 + 1{,}20x_2 + 0{,}95x_3 + 1{,}35x_4")
     NAMES = ["Hạ tầng số", "AI & dữ liệu", "Nhân lực số", "R&D"]
     c_obj = np.array([0.85,1.20,0.95,1.35])
@@ -223,6 +224,7 @@ elif page == "🧮 Bài 2 — LP 4 hạng mục":
 # ════════════════════════════════════════════════════════════════════
 elif page == "🏷️ Bài 3 — Chỉ số ưu tiên ngành":
     st.title("🏷️ Bài 3 — Chỉ số ưu tiên ngành Priority_i")
+    st.markdown("**Priority=Σaᵢx̃ᵢ−a₇R̃** (7 tiêu chí min-max chuẩn hóa) | Top-3 bất biến khi a₆ chạy 0,05→0,40: **CNTT-TT → CN chế biến → Tài chính-NH** | Dùng sidebar để thay đổi trọng số")
     GDP24 = 11511.9
     df3 = SEC.copy()
     df3["productivity"] = df3["gdp_share_2024_pct"]/100*GDP24/df3["labor_million"]
@@ -280,6 +282,7 @@ elif page == "🏷️ Bài 3 — Chỉ số ưu tiên ngành":
 # ════════════════════════════════════════════════════════════════════
 elif page == "🗺️ Bài 4 — LP 6 vùng × 4 hạng mục":
     st.title("🗺️ Bài 4 — LP phân bổ 50.000 tỷ theo vùng (6×4)")
+    st.error("⚠️ λ=0,70 VÔ NGHIỆM: Tây Nguyên max đạt 56 điểm < ngưỡng λ×82=57,4 (λ_max≈0,683). Mặc định λ=0,68 — hợp lệ. Hệ quả: chi phí công bằng ≈14.558 tỷ (21,2% Z*).", icon=None)
     REG4 = ["TDMN phía Bắc","ĐB sông Hồng","BTB-DH Trung Bộ","Tây Nguyên","Đông Nam Bộ","ĐBS Cửu Long"]
     BETA4 = np.array([[1.15,.85,.55,1.30],[.95,1.25,1.40,1.05],[1.05,.95,.85,1.15],
                       [1.20,.75,.45,1.35],[.90,1.30,1.55,1.00],[1.10,.85,.65,1.25]])
@@ -347,6 +350,7 @@ elif page == "🗺️ Bài 4 — LP 6 vùng × 4 hạng mục":
 # ════════════════════════════════════════════════════════════════════
 elif page == "📦 Bài 5 — MIP 15 dự án":
     st.title("📦 Bài 5 — MIP lựa chọn 15 dự án CĐS quốc gia")
+    st.markdown("**Liệt kê toàn bộ 2¹⁵=32.768 phương án** (numpy vectorized, <1s) + đối chiếu scipy.milp | Kết quả: Z*=115.400 tỷ, 9 dự án, nút thắt = ngân sách năm 1-2 (39.800/40.000 tỷ)")
     NAME5 = ["P1 TT dữ liệu Hòa Lạc","P2 TT dữ liệu phía Nam","P3 Phủ sóng 5G",
              "P4 VNeID 2.0","P5 Cổng DVC v3","P6 Y tế số","P7 Giáo dục số K-12",
              "P8 TT AI quốc gia","P9 Sandbox fintech","P10 Logistics thông minh",
@@ -402,6 +406,7 @@ elif page == "📦 Bài 5 — MIP 15 dự án":
 # ════════════════════════════════════════════════════════════════════
 elif page == "🏆 Bài 6 — TOPSIS 6 vùng":
     st.title("🏆 Bài 6 — TOPSIS xếp hạng 6 vùng cho đầu tư AI")
+    st.markdown("**TOPSIS vector + Entropy + mini-AHP** | Chuyên gia: ĐNB #1 (C*=0,940) · Entropy: ĐBSH #1 (C*=0,969) do w_FDI=0,306 cao | Thứ hạng bất biến khi w_AI chạy 0,05→0,45")
     REG6 = ["TDMN phía Bắc","ĐB sông Hồng","BTB-DH Trung Bộ","Tây Nguyên","Đông Nam Bộ","ĐBS Cửu Long"]
     CRIT6 = ["grdp_per_capita_million_VND","fdi_registered_billion_USD","digital_index_0_100",
              "ai_readiness_0_100","trained_labor_pct","rd_intensity_pct","internet_penetration_pct","gini_coef"]
@@ -460,6 +465,7 @@ elif page == "🏆 Bài 6 — TOPSIS 6 vùng":
 # ════════════════════════════════════════════════════════════════════
 elif page == "🎯 Bài 7 — Biên Pareto NSGA-II":
     st.title("🎯 Bài 7 — Tối ưu đa mục tiêu Pareto (NSGA-II)")
+    st.markdown("**4 mục tiêu:** f₁ GDP↑ · f₂ MAD vùng↓ · f₃ phát thải↓ · f₄ rủi ro ròng↓ | **Đánh đổi:** +15% tăng trưởng = MAD×7, phát thải×7 | Biên Pareto auto-render khi vào trang (cache)")
     BETA7 = np.array([[1.15,.85,.55,1.30],[.95,1.25,1.40,1.05],[1.05,.95,.85,1.15],
                       [1.20,.75,.45,1.35],[.90,1.30,1.55,1.00],[1.10,.85,.65,1.25]])
     e_co2 = np.array([0.42,0.55,0.48,0.32,0.62,0.38])
@@ -467,11 +473,10 @@ elif page == "🎯 Bài 7 — Biên Pareto NSGA-II":
     sig7  = np.array([0.32,0.28,0.30,0.35,0.25,0.30])
     BUD7,FLOOR7,CAP7 = 50000.,5000.,12000.
 
-    st.info("Biên Pareto được xấp xỉ bằng 3.000 nghiệm ngẫu nhiên khả thi (phiên bản nhanh cho Streamlit). Bài 7 gốc chạy NSGA-II 250 thế hệ → kết quả tốt hơn.", icon="⚡")
-    if st.button("🔄 Tính biên Pareto (3.000 nghiệm ngẫu nhiên)"):
-        with st.spinner("Đang tính..."):
-            rng7 = np.random.default_rng(42); F7 = []
-            for _ in range(4000):
+    @st.cache_data
+    def _pareto7():
+        rng7 = np.random.default_rng(42); F7 = []
+        for _ in range(4000):
                 x = rng7.random((6,4))*CAP7
                 s = x.sum(1); s[s<1e-9]=1e-9
                 x *= (np.clip(s,FLOOR7,CAP7)/s)[:,None]
@@ -482,32 +487,30 @@ elif page == "🎯 Bài 7 — Biên Pareto NSGA-II":
                 f3 = (e_co2*(x[:,0]+x[:,2])).sum()
                 f4 = (rho7*x[:,2]).sum() - (sig7*x[:,3]).sum()
                 F7.append([f1,f2,f3,f4])
-        F7 = np.array(F7)
-        G7 = np.column_stack([-F7[:,0], F7[:,1], F7[:,2], F7[:,3]])
-        st.session_state["pareto_G"] = G7
-    if "pareto_G" in st.session_state:
-        G7 = st.session_state["pareto_G"]
-        c1,c2 = st.columns(2)
-        with c1:
-            fig7, ax7 = plt.subplots(figsize=(6,4.5))
-            sc = ax7.scatter(G7[:,0]/1000, G7[:,1]/1000, c=G7[:,2], cmap="viridis", s=12, alpha=.5)
-            plt.colorbar(sc, ax=ax7, label="f3 phát thải"); ax7.set_xlabel("f1 GDP gain (nghìn tỷ)"); ax7.set_ylabel("f2 MAD vùng")
-            ax7.set_title("Biên Pareto: Tăng trưởng vs Bao trùm (màu=phát thải)"); st.pyplot(fig7)
-        with c2:
-            wt7 = st.slider("w tăng trưởng f₁", 0.1, 0.7, 0.4, 0.05)
-            wb7 = st.slider("w bao trùm f₂",    0.1, 0.5, 0.25, 0.05)
-            we7 = max(0, 1.0-wt7-wb7-0.15); ww7 = np.array([wt7,wb7,we7,0.15])
-            Gs7 = G7-G7.min(0)+1e-9; R7 = Gs7/np.sqrt((Gs7**2).sum(0)); V7 = R7*ww7
-            Ap7 = np.array([V7[:,0].max(),V7[:,1].min(),V7[:,2].min(),V7[:,3].min()])
-            An7 = np.array([V7[:,0].min(),V7[:,1].max(),V7[:,2].max(),V7[:,3].max()])
-            Cs7 = np.sqrt(((V7-An7)**2).sum(1))/(np.sqrt(((V7-Ap7)**2).sum(1))+np.sqrt(((V7-An7)**2).sum(1)))
-            b7 = Cs7.argmax()
-            st.success(f"**Nghiệm thỏa hiệp TOPSIS** (C*={Cs7[b7]:.3f}):\n\n"
-                       f"f1 GDP={G7[b7,0]:,.0f} · f2 MAD={G7[b7,1]:,.0f} · f3 phát thải={G7[b7,2]:.0f} · f4 rủi ro={G7[b7,3]:.0f}")
-            gmax7 = G7[:,0].argmax()
-            st.info(f"Chi phí cơ hội: nghiệm tăng trưởng cực đại thêm **+{(G7[gmax7,0]-G7[b7,0])/G7[b7,0]*100:.0f}%** f1\nnhưng f2 MAD xấu đi {(G7[gmax7,1]-G7[b7,1])/max(G7[b7,1],1)*100:.0f}%, phát thải +{(G7[gmax7,2]-G7[b7,2])/G7[b7,2]*100:.0f}%")
-    else:
-        st.markdown("👆 Nhấn nút để tính.")
+        return np.column_stack([-np.array(F7)[:,0], np.array(F7)[:,1], np.array(F7)[:,2], np.array(F7)[:,3]])
+    with st.spinner("Đang tính biên Pareto (chạy 1 lần, cache lại)..."):
+        G7 = _pareto7()
+    st.success(f"Biên Pareto: {len(G7):,} nghiệm · f1 GDP {G7[:,0].min()/1000:.0f}–{G7[:,0].max()/1000:.0f} nghìn tỷ · f2 MAD {G7[:,1].min():.0f}–{G7[:,1].max():.0f} tỷ")
+    c1, c2 = st.columns(2)
+    with c1:
+        fig7, ax7 = plt.subplots(figsize=(6,4.5))
+        sc = ax7.scatter(G7[:,0]/1000, G7[:,1]/1000, c=G7[:,2], cmap="viridis", s=12, alpha=.5)
+        plt.colorbar(sc, ax=ax7, label="f3 phát thải"); ax7.set_xlabel("f1 GDP gain (nghìn tỷ)"); ax7.set_ylabel("f2 MAD vùng")
+        ax7.set_title("Biên Pareto: Tăng trưởng vs Bao trùm (màu=phát thải)"); ax7.grid(alpha=.3)
+        st.pyplot(fig7)
+    with c2:
+        wt7 = st.slider("w tăng trưởng f₁", 0.1, 0.7, 0.4, 0.05)
+        wb7 = st.slider("w bao trùm f₂",    0.1, 0.5, 0.25, 0.05)
+        we7 = max(0, 1.0-wt7-wb7-0.15); ww7 = np.array([wt7,wb7,we7,0.15])
+        Gs7 = G7-G7.min(0)+1e-9; R7 = Gs7/np.sqrt((Gs7**2).sum(0)); V7 = R7*ww7
+        Ap7 = np.array([V7[:,0].max(),V7[:,1].min(),V7[:,2].min(),V7[:,3].min()])
+        An7 = np.array([V7[:,0].min(),V7[:,1].max(),V7[:,2].max(),V7[:,3].max()])
+        Cs7 = np.sqrt(((V7-An7)**2).sum(1))/(np.sqrt(((V7-Ap7)**2).sum(1))+np.sqrt(((V7-An7)**2).sum(1)))
+        b7 = Cs7.argmax()
+        gmax7 = G7[:,0].argmax()
+        st.success(f"**Nghiệm thỏa hiệp TOPSIS** (C*={Cs7[b7]:.3f}):\n\nf1={G7[b7,0]:,.0f} · f2={G7[b7,1]:,.0f} · f3={G7[b7,2]:.0f} · f4={G7[b7,3]:.0f}")
+        st.warning(f"**Chi phí cơ hội** của nghiệm max tăng trưởng: +{(G7[gmax7,0]-G7[b7,0])/G7[b7,0]*100:.0f}% GDP nhưng MAD×{(G7[gmax7,1]/max(G7[b7,1],1)):.1f}, phát thải×{(G7[gmax7,2]/G7[b7,2]):.1f}")
+
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -515,6 +518,7 @@ elif page == "🎯 Bài 7 — Biên Pareto NSGA-II":
 # ════════════════════════════════════════════════════════════════════
 elif page == "⏱️ Bài 8 — Tối ưu động 2026–2035":
     st.title("⏱️ Bài 8 — Tối ưu động phân bổ vốn 2026–2035")
+    st.warning("φ nguyên văn đề → TFP +35%/năm (GDP 2035 phi thực tế). App dùng φ/10 cho kết quả thực tế: CAGR 10,5%, front-load thắng trải đều.")
     st.info("Chế độ thủ công: thay đổi tỷ lệ đầu tư và xem ngay quỹ đạo 10 năm. φ dùng phiên bản tempered φ/10 (≈+3,5%/năm TFP — thực tế) thay vì nguyên văn đề (+35%/năm, phi thực tế).", icon="⚠️")
 
     def sim8(sh10, phi_scale=0.1):
@@ -572,6 +576,7 @@ elif page == "⏱️ Bài 8 — Tối ưu động 2026–2035":
 # ════════════════════════════════════════════════════════════════════
 elif page == "👷 Bài 9 — Thị trường lao động":
     st.title("👷 Bài 9 — Tác động AI tới thị trường lao động")
+    st.markdown("**NetJob=a₁xAI+b₁xH−c₁·risk·xAI** | LP bang-bang: 100% gói → GD-ĐT. Ngưỡng CN chế biến: x_H≥0,819·xAI (45% gói). TC-NH tỷ lệ 1,45 nguy hiểm nhất")
     SEC9 = ["Nông-Lâm-TS","CN chế biến","Xây dựng","Bán buôn-lẻ","Tài chính-NH","Logistics","CNTT-TT","GD-ĐT"]
     L9 = np.array([13.20,11.50,4.80,7.80,0.55,1.95,0.62,2.15])
     risk9 = np.array([18,42,25,38,52,35,28,22])/100
@@ -620,6 +625,7 @@ elif page == "👷 Bài 9 — Thị trường lao động":
 # ════════════════════════════════════════════════════════════════════
 elif page == "🎲 Bài 10 — Quy hoạch ngẫu nhiên":
     st.title("🎲 Bài 10 — Quy hoạch ngẫu nhiên hai giai đoạn")
+    st.markdown("**Phần A (gốc):** VSS=EVPI=0 — mô hình suy biến · **Phần B (mở rộng, cú sốc COVID/Yagi):** VSS=**1.768 tỷ**, EVPI=**5.520 tỷ** · SP giữ x_H=14.000 tỷ như bảo hiểm")
     J10 = ["I","D","AI","H"]
     S10 = ["s1 Lạc quan","s2 Cơ sở","s3 Bi quan","s4 Khủng hoảng"]
     betaS10 = np.array([[1.25,1.35,1.55,1.05],[1.00,1.10,1.25,0.95],[0.75,0.85,0.90,1.00],[0.40,0.50,0.55,1.10]])
@@ -697,6 +703,7 @@ elif page == "🎲 Bài 10 — Quy hoạch ngẫu nhiên":
 # ════════════════════════════════════════════════════════════════════
 elif page == "🤖 Bài 11 — Q-Learning":
     st.title("🤖 Bài 11 — Q-Learning cho chính sách thích nghi")
+    st.markdown("**MDP:** 81 trạng thái × 5 hành động · α=0,1 · γ=0,95 · 70% exploring starts | π*=6,60 > a1=5,45 > random=4,91 > a3=0,61 | Nhấn nút để huấn luyện (~15-20 giây)")
     ALLOC11 = {0:np.array([.70,.10,.10,.10]),1:np.array([.40,.25,.15,.20]),
                2:np.array([.25,.45,.15,.15]),3:np.array([.20,.20,.45,.15]),4:np.array([.30,.20,.10,.40])}
     ANAME11 = ["a0 Truyền thống","a1 Cân bằng","a2 Số hóa nhanh","a3 AI dẫn dắt","a4 Bao trùm"]
@@ -765,8 +772,26 @@ elif page == "🤖 Bài 11 — Q-Learning":
             a11=int(np.argmax(Q11[st11]))
             rows11.append({"Trạng thái":lbl,"Hành động":ANAME11[a11],"Max Q":round(Q11[st11].max(),3)})
         st.dataframe(pd.DataFrame(rows11), use_container_width=True)
-    else:
-        st.info("👈 Nhấn nút Huấn luyện để xem kết quả.")
+    if "Q11" not in st.session_state:
+        st.markdown("""
+**Kết quả tham khảo** (10.000 episodes, seed=42):
+
+| Chính sách | Phần thưởng TB |
+|---|---|
+| **π* Q-learning** | **6,60 ± 1,02** |
+| Luôn a1 Cân bằng | 5,45 ± 1,01 |
+| Ngẫu nhiên | 4,91 ± 1,29 |
+| Luôn a3 AI dẫn dắt | 0,61 ± 1,02 |
+
+**π*(s) — bảng chính sách học được:**
+
+| Trạng thái | Hành động tối ưu | Lý giải |
+|---|---|---|
+| VN 2026 (g TB, D TB, AI thấp, U TB) | a1 Cân bằng | Tình trạng bình thường → cân bằng 4 hạng mục |
+| Suy giảm (g thấp, D thấp, U cao) | a2 Số hóa nhanh | "Quick win": D thấp → đầu tư số cho lợi biên cao nhất |
+| Bùng nổ (g cao, D cao, AI cao, U thấp) | a1 Cân bằng | Consolidation: giữ đà, không đẩy AI thêm (rủi ro Cyber) |
+| Nóng máy (g cao, AI cao, U cao) | a1 Cân bằng | AI đã cao → ưu tiên H để giảm thất nghiệp |
+""")
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -774,6 +799,7 @@ elif page == "🤖 Bài 11 — Q-Learning":
 # ════════════════════════════════════════════════════════════════════
 elif page == "📋 Bài 12 — So sánh 5 kịch bản":
     st.title("📋 Bài 12 — So sánh định lượng 5 kịch bản chính sách 2026–2035")
+    st.markdown("**S1–S4:** cơ cấu cố định · **S5:** nghiệm tối ưu SLSQP Bài 8 | S5 welfare 84,3 (cao nhất) · S3 cyber risk 12,4 (cao nhất) · Dùng slider và multiselect bên dưới")
     SCEN12 = {
         "S1 Truyền thống": np.array([0.70,0.10,0.10,0.10]),
         "S2 Số hóa nhanh": np.array([0.25,0.45,0.15,0.15]),
