@@ -653,7 +653,7 @@ elif page == "🎲 Bài 10 — Quy hoạch ngẫu nhiên":
             r=np.zeros(nv); r[4+4*k+2]=1; r[3]=-0.5; A.append(r); b.append(0.)
             r=np.zeros(nv); r[3]=-1; r[4+4*k+3]=-1; r[4+4*K+k]=-1; A.append(r); b.append(-hreq[k])
         bds = [(0,None)]*nv
-        if fix_x: bds[:4] = [(v,v) for v in fix_x]
+        if fix_x is not None: bds[:4] = [(v,v) for v in fix_x]
         res2 = linprog(c, A_ub=np.array(A), b_ub=np.array(b), bounds=bds, method="highs")
         return (res2.x[:4], -res2.fun) if res2.status==0 else (None, None)
 
